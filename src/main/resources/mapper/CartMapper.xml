@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.food.mapper.CartMapper">
+
+    <delete id="delClearCart" parameterType="java.util.List">
+        delete from cart where uid=#{uid}  and fid in
+        <foreach collection="fidList" item="fid" index="index" open="(" close=")" separator=",">
+            #{fid}
+        </foreach>
+    </delete>
+
+</mapper>

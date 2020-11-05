@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.food.mapper.CommentMapper">
+
+    <resultMap id="myMap" type="comment">
+        <result property="uname" column="uname"/>
+        <result property="img" column="img"/>
+        <result property="descr" column="descr"/>
+        <result property="time" column="time"/>
+    </resultMap>
+    <select id="selFoodComment" resultMap="myMap">
+        select u.uname uname,cm.img,cm.descr,time
+        from customer u,food,comments cm
+        where u.id=cm.uid and food.id=cm.fid and cm.fid=#{fid}
+    </select>
+
+
+</mapper>
